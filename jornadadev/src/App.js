@@ -9,6 +9,15 @@ import db from './config/firebase';
 
 function App() {
 
+  let maxHeight;
+  if (window.innerHeight <= 800) {
+    maxHeight = window.innerHeight;
+  } else {
+    maxHeight = 800;
+  }
+
+  
+
   useEffect(() => {
     getVideos();
   }, []);
@@ -29,7 +38,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{maxHeight: maxHeight + "px"}}>
       <div className="app_videos">
         {videos.map(video => {
           return <Videos key={video.id} {...video} />
